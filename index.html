@@ -1,83 +1,178 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Tagcash Slot Machine</title>
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 
-    <title>Slotmachine by rienierpatron</title>
-  </head>
+		<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>Slotmachine</h1>
-        <h2></h2>
-        <a href="https://github.com/rienierpatron/slotmachine" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="dist/jquery.slotmachine.min.js"></script>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+	</head>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+	<body>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+		<div id="header">
+			
+			<table cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="center">
+						
+						<div class="content">
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+							<div>TAGCASH SLOT MACHINE</div>
+							
+							<!-- <div id="textMachine">
+								<div>IS AWESOME</div>
+								<div>ROCKS!</div>
+								<div>IS EASY TO USE</div>
+								<div>WORKS WELL</div>
+							</div> -->
+							<script>
+								$(document).ready(function(){
+									$("#textMachine").slotMachine({
+										active	: 1,
+										delay	: 450,
+										auto	: 1500
+									});
+								});
+							</script>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+		<div class="line" style="padding-top:10px;">
+			
+			<div class="content" style="text-align: center; height: 500px;">
+				
+				<div style="clear:both">
+					<p class="title" style="margin-left: -25px;"></p>
+				</div>
+				
+				<div style="clear:both; margin-top: 80px;">
+					<div id="machine1" class="slotMachine" style="margin-left: -65px;">
+						<div class="slot slot1"></div>
+						<div class="slot slot2"></div>
+						<div class="slot slot3"></div>
+						<div class="slot slot4"></div>
+						<!-- <div class="slot slot5"></div>
+						<div class="slot slot6"></div> -->
+					</div>
+					
+					<div id="machine2" class="slotMachine">
+						<div class="slot slot1"></div>
+						<div class="slot slot2"></div>
+						<div class="slot slot3"></div>
+						<div class="slot slot4"></div>
+						<!-- <div class="slot slot5"></div>
+						<div class="slot slot6"></div> -->
+					</div>
+					
+					<div id="machine3" class="slotMachine">
+						<div class="slot slot1"></div>
+						<div class="slot slot2"></div>
+						<div class="slot slot3"></div>
+						<div class="slot slot4"></div>
+						<!-- <div class="slot slot5"></div>
+						<div class="slot slot6"></div> -->
+					</div>
+					<script>
+						$(document).ready(function(){
+							$(".audioDemo").trigger('load');
+							$(".audioDemo").trigger('play');
+							var machine1 = $("#machine1").slotMachine({
+								active	: 0,
+								delay	: 500
+							});
+							
+							var machine2 = $("#machine2").slotMachine({
+								active	: 1,
+								delay	: 500
+							});
+							
+							window.machine3 = $("#machine3").slotMachine({
+								active	: 2,
+								delay	: 500
+							});
+							$("#slotMachineButtonShuffle").click(function(){
+								$('.title').empty();
+								machine1.shuffle();
+								machine2.shuffle();
+								machine3.shuffle();
+							});
+							$("#slotMachineButtonStop").click(function(){
+								if( machine1.isRunning()){
+									machine1.stop(1);
+									setTimeout(function(){
+										machine2.stop(1);
+									}, 500);
+									setTimeout(function(){
+										machine3.stop(1);
+									}, 1000);
+									setTimeout(function(){
+									$count = 0;
+									$('.check').trigger('click');
+									$count = 1;
+									setTimeout(function(){
+											$count = 2;
+											$('.check').trigger('click');
+										},1400);
+									},1200);
+								}
+								
+							});
+							$('.check').click(function(){
+								if($count == 2){
+									getIndexes();
+								}
+							});
+							function getIndexes(){
+								index1 = machine1.active().index;
+								index2 = machine2.active().index;
+								index3 = machine3.active().index;
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+								if((index1 == index2) && (index2 == index3)){
+									if(index1 == 0){
+										$('.title').empty();
+										$('.title').text('YOU WIN!');
+									}else{
+										$('.title').empty();
+										$('.title').text('YOU MUST GET THE TAG LOGOS. TRY AGAIN!');
+									}
+								}else{
+									if(((index1 == index2) && index1 == 0) || ((index2 == index3) && index2 == 0) || ((index1 == index3) && index1 == 0)){
+										$('.title').empty();
+										$('.title').text('ALMOST HAD IT!');
+									}else{
+										$('.title').empty();
+										$('.title').text('BETTER LUCK NEXT TIME!');
+									}
+								}
+							}
+						});
+					</script>
+				</div>
+				
+			</div>
+			
+			<div class="content" style="padding-left:500px; margin-top:-100px">
+				<div id="slotMachineButtonShuffle" class="slotMachineButton" style="font-size: 25px">Shuffle!</div>
+				<div id="slotMachineButtonStop" class="slotMachineButton" style="font-size: 25px">Stop!</div>
+				<input type="hidden" class="check">
+			</div>
+			
+		</div>
+		
+		
+		
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/rienierpatron/slotmachine/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/rienierpatron/slotmachine/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/rienierpatron/slotmachine"></a> is maintained by <a href="https://github.com/rienierpatron">rienierpatron</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
-
-  
-  </body>
+	</body>
 </html>
