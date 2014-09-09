@@ -135,6 +135,8 @@
 									if(index1 == 0){
 										$('.title').empty();
 										$('.title').text('YOU WIN!');
+										$("#slotMachineButtonAgain").show();
+										$("#slotMachineButtonWaiting").hide();
 									}else{
 										$('.title').empty();
 										$('.title').text('+1 SPIN!');
@@ -150,7 +152,7 @@
 										if($attempts > 0){
 											$('.title').text('ALMOST HAD IT!');
 										}else{
-											$('.title').text('GAME OVER!');
+											$('.title').text('GAME OVER! GAME OVER! THANKS FOR PARTICIPATING');
 											$("#slotMachineButtonAgain").show();
 											$("#slotMachineButtonWaiting").hide();
 										}
@@ -164,7 +166,7 @@
 											$("#slotMachineButtonShuffle").show();
 											$("#slotMachineButtonWaiting").hide();
 										}else{
-											$('.title').text('GAME OVER!');
+											$('.title').text('GAME OVER! THANKS FOR PARTICIPATING');
 											$("#slotMachineButtonAgain").show();
 											$("#slotMachineButtonWaiting").hide();
 										}
