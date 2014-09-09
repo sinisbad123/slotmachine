@@ -217,6 +217,14 @@ p.title{
 	color:#FFFFFF;
 	cursor: pointer;
 }
+.slotMachineButton2{
+	width:300px;
+	border:1px solid #8C0A00;
+	text-align:center;
+	padding:30px 10px 30px 10px;
+	color:#000000;
+	cursor: pointer;
+}
 
 .slotMachine{
 	width:300px;

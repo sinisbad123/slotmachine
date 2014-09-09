@@ -35,7 +35,6 @@
 				<div style="clear:both">
 					<p class="title" style="margin-left: -25px;"></p>
 				</div>
-				
 				<div style="clear:both; margin-top: 80px;">
 					<div id="machine1" class="slotMachine" style="margin-left: -65px;">
 						<div class="slot slot1"></div>
@@ -65,7 +64,11 @@
 					</div>
 					<script>
 						$(document).ready(function(){
+							$attempts = 3;
+							$('#attempts').text($attempts);
 							$('#slotMachineButtonStop').hide();
+							$('#slotMachineButtonWaiting').hide();
+							$('#slotMachineButtonAgain').hide();
 							var machine1 = $("#machine1").slotMachine({
 								active	: 0,
 								delay	: 500
@@ -91,6 +94,7 @@
 							$("#slotMachineButtonStop").click(function(){
 								if( machine1.isRunning()){
 									$(this).hide();
+									$("#slotMachineButtonWaiting").show();
 									machine1.stop(1);
 									setTimeout(function(){
 										machine2.stop(1);
@@ -105,7 +109,6 @@
 									setTimeout(function(){
 											$count = 2;
 											$('.check').trigger('click');
-											$("#slotMachineButtonShuffle").show();
 										},1400);
 									},1200);
 								}
@@ -115,6 +118,13 @@
 								if($count == 2){
 									getIndexes();
 								}
+							});
+							$("#slotMachineButtonAgain").click(function(){
+								$('.title').empty();
+								$(this).hide();
+								$("#slotMachineButtonShuffle").show();
+								$attempts = 3;
+								$('#attempts').text($attempts);
 							});
 							function getIndexes(){
 								index1 = machine1.active().index;
@@ -128,14 +138,37 @@
 									}else{
 										$('.title').empty();
 										$('.title').text('+1 SPIN!');
+										$attempts = $attempts+1;
+										$('#attempts').text($attempts);
+										$("#slotMachineButtonShuffle").show();
+										$("#slotMachineButtonWaiting").hide();
 									}
 								}else{
 									if(((index1 == index2) && index1 == 0) || ((index2 == index3) && index2 == 0) || ((index1 == index3) && index1 == 0)){
+										$attempts = $attempts-1;
 										$('.title').empty();
-										$('.title').text('ALMOST HAD IT!');
+										if($attempts > 0){
+											$('.title').text('ALMOST HAD IT!');
+										}else{
+											$('.title').text('GAME OVER!');
+											$("#slotMachineButtonAgain").show();
+											$("#slotMachineButtonWaiting").hide();
+										}
+										$('#attempts').text($attempts);
+
 									}else{
+										$attempts = $attempts-1;
 										$('.title').empty();
-										$('.title').text('BETTER LUCK NEXT TIME!');
+										if($attempts > 0){
+											$('.title').text('TRY AGAIN!');
+											$("#slotMachineButtonShuffle").show();
+											$("#slotMachineButtonWaiting").hide();
+										}else{
+											$('.title').text('GAME OVER!');
+											$("#slotMachineButtonAgain").show();
+											$("#slotMachineButtonWaiting").hide();
+										}
+										$('#attempts').text($attempts);
 									}
 								}
 							}
@@ -148,6 +181,9 @@
 			<div class="content" style="padding-left:540px; margin-top:-150px">
 				<div id="slotMachineButtonShuffle" class="slotMachineButton" style="font-size: 25px">SHUFFLE</div>
 				<div id="slotMachineButtonStop" class="slotMachineButton" style="font-size: 25px;">STOP</div>
+				<div id="slotMachineButtonAgain" class="slotMachineButton" style="font-size: 25px;">PLAY AGAIN</div>
+				<div id="slotMachineButtonWaiting" class="slotMachineButton" style="font-size: 25px;">GETTING RESULT</div>
+				<div id="slotMachineButtonAttempt" class="slotMachineButton2" style="font-size: 25px;">ATTEMPTS LEFT : <span id="attempts"></span></div>
 				<input type="hidden" class="check">
 			</div>
 			
