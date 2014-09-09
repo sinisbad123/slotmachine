@@ -13,42 +13,21 @@
 		<script type="text/javascript" src="dist/jquery.slotmachine.min.js"></script>
 
 	</head>
-
 	<body>
-
 		<div id="header">
-			
 			<table cellpadding="0" cellspacing="0">
 				<tr>
 					<td align="center">
-						
 						<div class="content">
-
 							<div>TAGCASH SLOT MACHINE</div>
-							
-							<!-- <div id="textMachine">
-								<div>IS AWESOME</div>
-								<div>ROCKS!</div>
-								<div>IS EASY TO USE</div>
-								<div>WORKS WELL</div>
-							</div> -->
-							<script>
-								$(document).ready(function(){
-									$("#textMachine").slotMachine({
-										active	: 1,
-										delay	: 450,
-										auto	: 1500
-									});
-								});
-							</script>
-
+							<p style="text-align:center;font-size:40px;padding-top:30px;">
+								Facebook: Tagcash Rewards | Twitter: @tagcashwallet | Instagram: @tagcashPh | LinkedIn: @tagbondPh
+							</p>
 						</div>
 					</td>
 				</tr>
 			</table>
-			
 		</div>
-		
 		<div class="line" style="padding-top:10px;">
 			
 			<div class="content" style="text-align: center; height: 500px;">
@@ -145,7 +124,8 @@
 										$('.title').text('YOU WIN!');
 									}else{
 										$('.title').empty();
-										$('.title').text('YOU MUST GET THE TAG LOGOS. TRY AGAIN!');
+										$('.title').text('SPIN AGAIN!');
+										$("#slotMachineButtonShuffle").trigger('click');
 									}
 								}else{
 									if(((index1 == index2) && index1 == 0) || ((index2 == index3) && index2 == 0) || ((index1 == index3) && index1 == 0)){
@@ -170,9 +150,5 @@
 			</div>
 			
 		</div>
-		
-		
-		
-
 	</body>
 </html>
